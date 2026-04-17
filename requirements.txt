@@ -1,0 +1,5 @@
+yt-dlp>=2026.03.15
+yt-dlp-ejs>=0.8.0
+demucs>=4.0.1
+torchcodec>=0.8.0
+openai>=1.75.0

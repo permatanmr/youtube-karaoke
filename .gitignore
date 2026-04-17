@@ -1,0 +1,35 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Project output artifacts
+outputs/
+*.mp3
+*.m4a
+*.wav
+*.aac
+*.opus
+*.mp4
+*.mkv
+*.webm
+*.srt
+
+# Temporary files
+*.tmp
+*.log
+
+# macOS / editor noise
+.DS_Store
+.vscode/
+.idea/
