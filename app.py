@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 
 MAX_DURATION_SECONDS = 7 * 60
-SUBTITLE_ADVANCE_SECONDS = 2.0
+SUBTITLE_ADVANCE_SECONDS = 0.6
 OPENAI_MAX_UPLOAD_BYTES = 25 * 1024 * 1024
 MIN_SUPPORTED_NODE_VERSION = (20, 0, 0)
 SUPPORTED_BROWSER_NAMES = {
@@ -619,6 +619,14 @@ def combine_karaoke_video(
             "libx264",
             "-crf",
             "22",
+            "-pix_fmt",
+            "yuv420p",
+            "-profile:v",
+            "high",
+            "-level:v",
+            "4.1",
+            "-tag:v",
+            "avc1",
             "-c:a",
             "aac",
             "-b:a",
@@ -667,7 +675,17 @@ def combine_karaoke_video(
         "-map",
         "2:0",
         "-c:v",
-        "copy",
+        "libx264",
+        "-crf",
+        "22",
+        "-pix_fmt",
+        "yuv420p",
+        "-profile:v",
+        "high",
+        "-level:v",
+        "4.1",
+        "-tag:v",
+        "avc1",
         "-c:a",
         "aac",
         "-b:a",
@@ -803,7 +821,7 @@ def main() -> int:
         print("Removing [Musik]/[Music] phrases from subtitle...")
         remove_music_phrases_from_subtitle(subtitle_file)
 
-        print("Advancing subtitle timing by 1 second...")
+        print("Advancing subtitle timing by 2 second...")
         shift_subtitle_earlier(subtitle_file, SUBTITLE_ADVANCE_SECONDS)
 
         print("Combining muted video + music + subtitle...")
